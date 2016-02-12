@@ -12,22 +12,22 @@
             <ui:define name="content">
                 <c:choose>
                     <c:when test="#{booking.theater=='none'}">
-                        <h2>Кинотеатр не найден, выберите другой сеанс</h2>
+                        <h2>Р¤РёР»СЊРј РЅРµ РЅР°Р№РґРµРЅ, РІС‹Р±РµСЂРёС‚Рµ РґСЂСѓРіРѕР№ СЃРµР°РЅСЃ</h2>
                         <h:form>
-                            <p>Название фильма: #{booking.movieName}</p>
-                            <p>Начало сеанса: #{booking.startTime}</p>
-                            <p><h:commandButton id="back" value="Назад" action="showtimes"/></p>
+                            <p>РќР°Р·РІР°РЅРёРµ С„РёР»СЊРјР°: #{booking.movieName}</p>
+                            <p>РќР°С‡Р°Р»Рѕ СЃРµР°РЅСЃР°: #{booking.startTime}</p>
+                            <p><h:commandButton id="back" value="РќР°Р·Р°Рґ" action="showtimes"/></p>
                         </h:form>
                     </c:when>
 
                     <c:otherwise>
-                        <h2>Забронировать?</h2>
+                        <h2>Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ?</h2>
                         <h:form>
-                            <p>Название фильма: #{booking.movieName}</p>
-                            <p>Начало сеанса: #{booking.startTime}</p>
-                            <p>Кинотеатр: #{booking.theater}</p>
-                            <p><h:commandButton id="next" value="Да" action="print"/></p>
-                            <p><h:commandButton id="back" value="Назад" action="showtimes"/></p>
+                            <p>РќР°Р·РІР°РЅРёРµ С„РёР»СЊРјР°: #{booking.movieName}</p>
+                            <p>РќР°С‡Р°Р»Рѕ СЃРµР°РЅСЃР°: #{booking.startTime}</p>
+                            <p>РўРµР°С‚СЂ: #{booking.theater}</p>
+                            <p><h:commandButton id="next" value="Р”Р°" action="print"/></p>
+                            <p><h:commandButton id="back" value="РќР°Р·Р°Рґ" action="showtimes"/></p>
                         </h:form>
                     </c:otherwise>
                 </c:choose>

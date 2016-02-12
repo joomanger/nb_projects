@@ -5,6 +5,7 @@
  */
 package org.glassfish.movieplex7.booking;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.faces.flow.FlowScoped;
@@ -21,11 +22,12 @@ import org.glassfish.movieplex7.entities.ShowTiming;
  */
 @Named
 @FlowScoped("booking")
-public class Booking {
+public class Booking implements Serializable {
 
     private int movieId;
     private String startTime;
     private int startTimeId;
+    private String theater;
 
     @PersistenceContext
     EntityManager em;
@@ -73,15 +75,15 @@ public class Booking {
         try {
             List<ShowTiming> list = em.createNamedQuery("ShowTiming.findByMovieAndTimeslotId", ShowTiming.class)
                     .setParameter("movieId", movieId)
-                    .setParameter("timingId", startTimeId)
+                    .setParameter("timeslotId", startTimeId)
                     .getResultList();
             if (list.isEmpty()) {
-                return "none";
+                return "qwert";
             }
 
             return list.get(0).getTheater().toString();
         } catch (Exception e) {
-            return "none";
+            return e.getMessage();
         }
     }
 
