@@ -9,8 +9,8 @@ and open the template in the editor.
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd" version="2.2"> 
     <flow-definition id="booking">
-        <flow-return id="goHome">
-            <flow-outcome>/</flow-outcome>
+        <flow-return id="gohome">
+            <flow-outcome>/index</flow-outcome>
         </flow-return>
     </flow-definition>
 </faces-config>
