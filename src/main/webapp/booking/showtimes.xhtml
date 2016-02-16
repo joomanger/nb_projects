@@ -16,9 +16,12 @@
                     <h:selectOneRadio value="#{booking.startTime}"
                                       layout="pageDirection"
                                       required="true">
-                        <c:forEach items="#{timeslotFacadeRest.all}" var="s">
+                       <!-- <c:forEach items="#{timeslotFacadeRest.all}" var="s">
                             <f:selectItem itemValue="#{s.id},#{s.startTime}" itemLabel="#{s.startTime}"/>
-                        </c:forEach>
+                        </c:forEach> -->
+                        <f:selectItems value="#{timeslotFacadeRest.all}"
+                                       var="s" itemValue="#{s.id},#{s.startTime}"
+                                       itemLabel="#{s.startTime}"/>
                     </h:selectOneRadio>
                     <h:commandButton value="Подтвердить" action="confirm"/>
                     <h:commandButton id="back" value="Назад" action="booking" immediate="true"/>
