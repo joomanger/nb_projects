@@ -2,16 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
     <body>
-
         <ui:composition template="./../WEB-INF/template.xhtml">
-
             <ui:define name="content">
-                content
+                <table>
+                    <tr>
+                        <td><label>Имя</label></td>
+                        <td><input type="text" id="username" autofocus="true" /></td>
+                    </tr>   
+                    <tr>
+                        <td><label>Комментарий</label></td>
+                        <td><textarea id="comment" cols="45" rows="6"  /></td>
+                    </tr>   
+                    <tr>
+                        <td><button onclick="sendComment()" id="btn_send">Отправить</button></td>
+                        <td><button onclick="document.getElementById('comment').value = ''" id="btn_clear">Очистить</button></td>
+                    </tr>
+                    <tr>
+                        <td><label>История</label></td>
+                        <td><textarea readonly="true" id="comments" cols="45" rows="25" /></td>
+                    </tr>
+                </table>
+                <script type="text/javascript" src="${facesContext.externalContext.requestContextPath}/comments.js"></script>
+                
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>
