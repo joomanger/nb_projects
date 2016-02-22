@@ -30,7 +30,7 @@ public class MovieClientBean {
     @PostConstruct
     public void init() {
         client = ClientBuilder.newClient();
-        target = client.target("http://localhost:8080/movieplex7/webresources/movie/");
+        target = client.target("http://localhost:8080/movieplex7/webresources/movies/");
     }
 
     @PreDestroy
