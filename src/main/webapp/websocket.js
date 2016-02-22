@@ -1,23 +1,20 @@
 var wsUri = "ws://localhost:8080/nb_projects/websocket";
 var websocket = new WebSocket(wsUri);
-var output = document.getElementById("output");
-var output2 = document.getElementById("output2");
-output2.innerHTML += "Тест Тест Тест";
+var comments = document.getElementById("comments");
+var comment = document.getElementById("comment");
+var username = document.getElementById("username");
 
-websocket.onopen = function (evt) {
-    onOpen(evt);
-};
 websocket.onmessage = function (evt) {
-    setText(evt);
+    comments.value += evt.data;
 };
 
-function writeToScreen(message) {
-    output.innerHTML += message + "<br>";
+function sendText(txt) {
+    console.log("sending text: " + txt);
+    websocket.send(txt);
 }
-function onOpen(evt) {
-    writeToScreen('<span style="color: green;">Connected to ' + wsUri + '</span> ');
+
+function sendComment() {
+    comments.value += username.value + ": " + comment.value + "\n\n";
+    websocket.send(username.value + ": " + comment.value + "\n\n");
 }
-function sendText(json) {
-    console.log("sending text: " + json);
-    websocket.send(json);
-}
+
