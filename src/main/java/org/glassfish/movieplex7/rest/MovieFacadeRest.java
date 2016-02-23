@@ -56,7 +56,7 @@ import org.glassfish.movieplex7.entities.Movie;
 
 @Named
 @Stateless
-@Path("movies")
+@Path("movie")
 public class MovieFacadeRest extends AbstractFacade<Movie> {
 
     @PersistenceContext
