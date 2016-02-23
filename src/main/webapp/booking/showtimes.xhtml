@@ -16,9 +16,6 @@
                     <h:selectOneRadio value="#{booking.startTime}"
                                       layout="pageDirection"
                                       required="true">
-                       <!-- <c:forEach items="#{timeslotFacadeRest.all}" var="s">
-                            <f:selectItem itemValue="#{s.id},#{s.startTime}" itemLabel="#{s.startTime}"/>
-                        </c:forEach> -->
                         <f:selectItems value="#{timeslotFacadeRest.all}"
                                        var="s" itemValue="#{s.id},#{s.startTime}"
                                        itemLabel="#{s.startTime}"/>
