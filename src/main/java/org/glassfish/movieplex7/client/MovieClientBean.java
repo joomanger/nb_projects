@@ -8,12 +8,14 @@ package org.glassfish.movieplex7.client;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import org.glassfish.movieplex7.entities.Movie;
+import org.glassfish.movieplex7.json.MovieWriter;
 
 /**
  *
@@ -25,15 +27,16 @@ public class MovieClientBean {
 
     private Client client;
     private WebTarget target;
-    /*@Inject
-    private MovieBackingBean bean;*/
-    
     private int movieId;
+    private String movieName;
+    private String actors;
 
     @PostConstruct
     public void init() {
         client = ClientBuilder.newClient();
         target = client.target("http://localhost:8080/nb_projects/webresources/movie/");
+        movieName="";
+        actors="";
     }
 
     @PreDestroy
@@ -49,8 +52,8 @@ public class MovieClientBean {
         Movie m = target.path("{movie}").resolveTemplate("movie", getMovieId()).request().get(Movie.class);
         return m;
     }
-    
-    public void deleteMovie(){
+
+    public void deleteMovie() {
         target.path("{movie}").resolveTemplate("movie", getMovieId()).request().delete();
     }
 
@@ -61,6 +64,29 @@ public class MovieClientBean {
     public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
-    
-    
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    public void addMovie() {
+        Movie m = new Movie();
+        m.setId(movieId);
+        m.setName(movieName);
+        m.setActors(actors);
+        target.register(MovieWriter.class).request().post(Entity.entity(m, MediaType.APPLICATION_JSON));
+    }
+
 }
